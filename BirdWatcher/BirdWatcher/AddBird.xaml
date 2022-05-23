@@ -7,8 +7,11 @@
                Placeholder="Enter bird name" />
         <Entry x:Name="locationEntry"
                Placeholder="Enter location" />
+        <Button Text="Add a photo"
+                Clicked="AddPhoto_Clicked" />
         <Button Text="Add to Database"
                 Clicked="OnButtonClicked" />
+        <Image x:Name="resultImage"/>
         <CollectionView x:Name="collectionView">
             <CollectionView.ItemTemplate>
                 <DataTemplate>

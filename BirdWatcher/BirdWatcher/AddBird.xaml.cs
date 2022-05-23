@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -37,5 +37,15 @@ namespace BirdWatcher
             }
         }
 
+        async private void AddPhoto_Clicked(object sender, EventArgs e)
+        {
+            var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+            {
+                Title = "Pick a photo"
+            });
+            var stream = await result.OpenReadAsync();
+
+            resultImage.Source = ImageSource.FromStream(() => stream);
+        }
     }
 }
