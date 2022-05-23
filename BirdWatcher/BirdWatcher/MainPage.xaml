@@ -21,6 +21,7 @@
         </Label>
         <Label Text="Work Diary" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
         <Button Text="Add Entry" Clicked="AddEntryClicked"/>
+        <Button Text="Gallery" Clicked="Gallery_Clicked"/>
 
     </StackLayout>
 

@@ -9,21 +9,11 @@
                Placeholder="Enter location" />
         <Button Text="Add a photo"
                 Clicked="AddPhoto_Clicked" />
+        <Button Text="Take a photo"
+                Clicked="TakePhoto_Clicked" />
         <Button Text="Add to Database"
                 Clicked="OnButtonClicked" />
         <Image x:Name="resultImage"/>
-        <CollectionView x:Name="collectionView">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <StackLayout>
-                        <Label Text="{Binding Name}"
-                               FontSize="Medium" />
-                        <Label Text="{Binding Location}"
-                               TextColor="Silver"
-                               FontSize="Small" />
-                    </StackLayout>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+
     </StackLayout>
 </ContentPage>
