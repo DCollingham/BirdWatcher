@@ -26,6 +26,12 @@ namespace BirdWatcher
             return _database.InsertAsync(bird);
         }
 
+        public Task<int> DeleteBird(Bird bird)
+        {
+            return _database.DeleteAsync(bird);
+        }
+
+
 
     }
 }

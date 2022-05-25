@@ -14,7 +14,7 @@ namespace BirdWatcher
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddBird : ContentPage
     {
-        public string NewFile { get; set; }
+        public string imageFilePath { get; set; }
 
         public AddBird()
         {
@@ -30,7 +30,7 @@ namespace BirdWatcher
                 {
                     Name = nameEntry.Text,
                     Location = locationEntry.Text,
-                    ImageUrl = NewFile
+                    ImageUrl = imageFilePath
                 });
 
                 nameEntry.Text = locationEntry.Text = string.Empty;
@@ -46,8 +46,8 @@ namespace BirdWatcher
 
             if (result != null)
             {
+                imageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
                 System.IO.Stream stream = await result.OpenReadAsync();
-
                 resultImage.Source = ImageSource.FromStream(() => stream);
             }
         }
@@ -62,11 +62,9 @@ namespace BirdWatcher
             if(result != null)
             {
 
-                NewFile = Path.Combine(FileSystem.AppDataDirectory, result.FileName);
-                Debug.WriteLine($"This is the path {NewFile}");
-                
+                imageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
+                Debug.WriteLine($"This is the path {imageFilePath}");         
                 System.IO.Stream stream = await result.OpenReadAsync();
-
                 resultImage.Source = ImageSource.FromStream(() => stream);
             }
 
