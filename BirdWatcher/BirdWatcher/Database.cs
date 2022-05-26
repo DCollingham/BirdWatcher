@@ -1,6 +1,7 @@
 ﻿using SQLite;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -26,12 +27,23 @@ namespace BirdWatcher
             return _database.InsertAsync(bird);
         }
 
-        public Task<int> DeleteBird(Bird bird)
+        public async Task<int> DeleteBird(Bird bird)
         {
-            return _database.DeleteAsync(bird);
+            return await _database.DeleteAsync(bird);
         }
 
+        public async Task<int> EditBird(Bird bird)
+        {
+            return await _database.UpdateAsync(bird);
+        }
 
+        public ObservableCollection<Bird> GetBirdsObservableAsync()
+        {
+            List<Bird> list = _database.Table<Bird>().ToListAsync().Result;
+            ObservableCollection<Bird> result = new ObservableCollection<Bird>(list);
+
+            return result;
+        }
 
     }
 }

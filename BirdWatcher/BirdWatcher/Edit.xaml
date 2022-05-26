@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BirdWatcher.Edit">
+    <StackLayout Margin="20,35,20,20" >
+        <Image x:Name="previousImage"  Source="{Binding ImageUrl}"/>
+        <Entry x:Name="nameEntry"
+               Placeholder="Enter bird name" />
+        <Entry x:Name="locationEntry"
+               Placeholder="Enter location" />
+        <Button Text="Add different photo"
+                Clicked="AddPhoto_Clicked" />
+        <Button Text="Take a photo"
+                Clicked="TakePhoto_Clicked" />
+        <Button Text="Update Entry"
+                Clicked="OnButtonClicked" />
+        <Image x:Name="resultImage"/>
+
+    </StackLayout>
+</ContentPage>

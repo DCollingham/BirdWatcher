@@ -22,7 +22,7 @@ namespace BirdWatcher
 
         private void Gallery_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new NavigationPage(new Gallery()));
+            _ = Navigation.PushModalAsync(new NavigationPage(new Gallery()));
         }
     }
 }
