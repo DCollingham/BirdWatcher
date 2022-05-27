@@ -16,7 +16,7 @@ namespace BirdWatcher
     {
         public string imageFilePath { get; set; }
         public Bird Bird { get; set; }
-
+        private bool imageChanged = false;
         public Edit(Bird bird)
         {
             InitializeComponent();
@@ -32,10 +32,12 @@ namespace BirdWatcher
             {
                 Bird.Name = nameEntry.Text;
                 Bird.Location = locationEntry.Text;
+                if (imageChanged)
+                {
+                    Bird.ImageUrl = imageFilePath;
+                }
                 int result = await App.Database.EditBird(Bird);
-
-                nameEntry.Text = locationEntry.Text = string.Empty;
-                Debug.WriteLine(result);
+                //await Navigation.PopModalAsync();
             }
         }
 
@@ -49,8 +51,9 @@ namespace BirdWatcher
             if (result != null)
             {
                 imageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
-                System.IO.Stream stream = await result.OpenReadAsync();
-                resultImage.Source = ImageSource.FromStream(() => stream);
+                Stream stream = await result.OpenReadAsync();
+                previousImage.Source = ImageSource.FromStream(() => stream);
+                imageChanged = true;
             }
         }
 
@@ -66,8 +69,9 @@ namespace BirdWatcher
 
                 imageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
                 Debug.WriteLine($"This is the path {imageFilePath}");
-                System.IO.Stream stream = await result.OpenReadAsync();
-                resultImage.Source = ImageSource.FromStream(() => stream);
+                Stream stream = await result.OpenReadAsync();
+                previousImage.Source = ImageSource.FromStream(() => stream);
+                imageChanged = true;
             }
         }
 

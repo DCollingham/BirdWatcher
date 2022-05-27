@@ -37,9 +37,9 @@ namespace BirdWatcher
             return await _database.UpdateAsync(bird);
         }
 
-        public ObservableCollection<Bird> GetBirdsObservableAsync()
+        public async Task<ObservableCollection<Bird>> GetBirdsObservableAsync()
         {
-            List<Bird> list = _database.Table<Bird>().ToListAsync().Result;
+            List<Bird> list = await _database.Table<Bird>().ToListAsync();
             ObservableCollection<Bird> result = new ObservableCollection<Bird>(list);
 
             return result;
