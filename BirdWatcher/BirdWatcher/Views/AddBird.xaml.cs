@@ -14,7 +14,7 @@ namespace BirdWatcher
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddBird : ContentPage
     {
-        public string imageFilePath { get; set; }
+        public string ImageFilePath { get; set; }
 
         public AddBird()
         {
@@ -30,14 +30,16 @@ namespace BirdWatcher
                 {
                     Name = nameEntry.Text,
                     Location = locationEntry.Text,
-                    ImageUrl = imageFilePath
+                    ImageUrl = ImageFilePath,
+                    Family = familyEntry.Text,
+                    Species = speciesEntry.Text
                 });
 
-                nameEntry.Text = locationEntry.Text = string.Empty;
+                ClearLabels();
             }
         }
 
-        async private void AddPhoto_Clicked(object sender, EventArgs e)
+        private async void AddPhoto_Clicked(object sender, EventArgs e)
         {
             FileResult result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
             {
@@ -46,8 +48,8 @@ namespace BirdWatcher
 
             if (result != null)
             {
-                imageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
-                System.IO.Stream stream = await result.OpenReadAsync();
+                ImageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
+                Stream stream = await result.OpenReadAsync();
                 resultImage.Source = ImageSource.FromStream(() => stream);
             }
         }
@@ -62,12 +64,19 @@ namespace BirdWatcher
             if(result != null)
             {
 
-                imageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
-                Debug.WriteLine($"This is the path {imageFilePath}");         
-                System.IO.Stream stream = await result.OpenReadAsync();
+                ImageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
+                Debug.WriteLine($"This is the path {ImageFilePath}");
+                Stream stream = await result.OpenReadAsync();
                 resultImage.Source = ImageSource.FromStream(() => stream);
             }
-
+        }
+        private void ClearLabels()
+        {
+            nameEntry.Text = string.Empty;
+            locationEntry.Text = string.Empty;
+            ImageFilePath = string.Empty;
+            familyEntry.Text = string.Empty;
+            speciesEntry.Text = string.Empty;
         }
     }
 }

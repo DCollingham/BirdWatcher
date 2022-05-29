@@ -17,14 +17,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="AddBird.xaml">
+    <EmbeddedResource Update="Views\AddBird.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Edit.xaml">
+    <EmbeddedResource Update="Views\EditBird.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Gallery.xaml">
+    <EmbeddedResource Update="Views\Sightings.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\ViewBird.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Views\EditBird.xaml.cs">
+      <DependentUpon>EditBird.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\Sightings.xaml.cs">
+      <DependentUpon>Sightings.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 </Project>

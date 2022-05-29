@@ -14,14 +14,14 @@ namespace BirdWatcher
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Edit : ContentPage
     {
-        public string imageFilePath { get; set; }
+        public string ImageFilePath { get; set; }
         public Bird Bird { get; set; }
         private bool imageChanged = false;
         public Edit(Bird bird)
         {
             InitializeComponent();
             Bird = bird;
-            fillBirdLabels();
+            FillBirdLabels();
             Debug.WriteLine($" Bird Id: {Bird.ID}");
         }
 
@@ -34,10 +34,10 @@ namespace BirdWatcher
                 Bird.Location = locationEntry.Text;
                 if (imageChanged)
                 {
-                    Bird.ImageUrl = imageFilePath;
+                    Bird.ImageUrl = ImageFilePath;
                 }
-                int result = await App.Database.EditBird(Bird);
-                //await Navigation.PopModalAsync();
+                _ = await App.Database.EditBird(Bird);
+                await Navigation.PopModalAsync();
             }
         }
 
@@ -50,7 +50,7 @@ namespace BirdWatcher
 
             if (result != null)
             {
-                imageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
+                ImageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
                 Stream stream = await result.OpenReadAsync();
                 previousImage.Source = ImageSource.FromStream(() => stream);
                 imageChanged = true;
@@ -67,15 +67,15 @@ namespace BirdWatcher
             if (result != null)
             {
 
-                imageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
-                Debug.WriteLine($"This is the path {imageFilePath}");
+                ImageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
+                Debug.WriteLine($"This is the path {ImageFilePath}");
                 Stream stream = await result.OpenReadAsync();
                 previousImage.Source = ImageSource.FromStream(() => stream);
                 imageChanged = true;
             }
         }
 
-        private void fillBirdLabels()
+        private void FillBirdLabels()
         {
             nameEntry.Text = Bird.Name;
             locationEntry.Text = Bird.Location;

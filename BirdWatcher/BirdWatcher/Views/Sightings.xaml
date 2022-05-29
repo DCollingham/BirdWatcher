@@ -2,7 +2,12 @@
 <ContentPage
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-			 x:Class="BirdWatcher.Gallery">
+			 x:Class="BirdWatcher.Gallery"
+	xmlns:local="clr-namespace:BirdWatcher">
+	<!--<ContentPage.BindingContext>
+		<local:BirdViewModel/>
+	</ContentPage.BindingContext>-->
+	
 	<ContentPage.Resources>
 		<Style TargetType="Grid">
 			<Setter Property="VisualStateManager.VisualStateGroups">
@@ -22,7 +27,7 @@
 	</ContentPage.Resources>
 	<ContentPage.Content>
 		<StackLayout>
-			<CollectionView x:Name="birdCollection">
+			<CollectionView x:Name="birdCollection" ItemsSource="{Binding Birds}">
 				<CollectionView.ItemTemplate>
 					<DataTemplate>
 						<SwipeView>
@@ -37,8 +42,17 @@
 											   CommandParameter="{Binding .}"></SwipeItem>
 								</SwipeItems>
 							</SwipeView.RightItems>
-
-							<Grid Padding="8">
+							
+							<SwipeView.LeftItems>
+								<SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
+									<SwipeItem Text="Details" BackgroundColor="DarkGray" 
+											   Invoked="SwipeItem_DetailsInvoked"
+											   CommandParameter="{Binding .}"></SwipeItem>
+   
+								</SwipeItems>
+							</SwipeView.LeftItems>
+							
+									<Grid Padding="8">
 								<Grid.RowDefinitions>
 									<RowDefinition Height="Auto" />
 									<RowDefinition Height="Auto" />

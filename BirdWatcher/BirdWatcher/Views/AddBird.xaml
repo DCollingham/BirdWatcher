@@ -5,6 +5,10 @@
     <StackLayout Margin="20,35,20,20">
         <Entry x:Name="nameEntry"
                Placeholder="Enter bird name" />
+        <Entry x:Name="familyEntry"
+               Placeholder="Enter bird family" />
+        <Entry x:Name="speciesEntry"
+               Placeholder="Enter bird species" />
         <Entry x:Name="locationEntry"
                Placeholder="Enter location" />
         <Button Text="Add a photo"
