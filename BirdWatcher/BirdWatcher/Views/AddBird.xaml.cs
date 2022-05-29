@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
@@ -14,8 +11,8 @@ namespace BirdWatcher
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddBird : ContentPage
     {
-        public string ImageFilePath { get; set; }
-
+        public string ImageFilePath { get; set; } //Set Image Path Property
+        public Location BirdLocation { get; set; } // Set Location Property
         public AddBird()
         {
             InitializeComponent();
@@ -26,24 +23,23 @@ namespace BirdWatcher
         {
             if (!string.IsNullOrWhiteSpace(nameEntry.Text) && !string.IsNullOrWhiteSpace(locationEntry.Text))
             {
-                await App.Database.SaveBirdAsync(new Bird
+                await App.Database.SaveBirdAsync(new Bird //Creates new Bird object & Saves to DB
                 {
                     Name = nameEntry.Text,
                     Location = locationEntry.Text,
                     ImageUrl = ImageFilePath,
-                    Family = familyEntry.Text,
-                    Species = speciesEntry.Text,
-                    DateSpotted = datePicker.Date.ToString("dd/MM/yyyy")
-
-                }); ;
+                    DateSpotted = datePicker.Date,
+                    Longitude = BirdLocation.Longitude,
+                    Latitude = BirdLocation.Latitude
+                });
 
                 ClearLabels();
             }
         }
 
-        private async void AddPhoto_Clicked(object sender, EventArgs e)
+        private async void AddPhoto_Clicked(object sender, EventArgs e) //Adds a photo
         {
-            FileResult result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
+            FileResult result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions //Asigns photo to result
             {
                 Title = "Pick a photo"
             });
@@ -70,6 +66,7 @@ namespace BirdWatcher
                 Debug.WriteLine($"This is the path {ImageFilePath}");
                 Stream stream = await result.OpenReadAsync();
                 resultImage.Source = ImageSource.FromStream(() => stream);
+                BirdLocation = GetLocation().Result;
             }
         }
         private void ClearLabels()
@@ -77,8 +74,26 @@ namespace BirdWatcher
             nameEntry.Text = string.Empty;
             locationEntry.Text = string.Empty;
             ImageFilePath = string.Empty;
-            familyEntry.Text = string.Empty;
-            speciesEntry.Text = string.Empty;
+        }
+
+        private async Task<Location> GetLocation()
+        {
+            Location location = null;
+
+            try
+            {
+                location = await Geolocation.GetLastKnownLocationAsync();
+                if(location == null)
+                {
+                    location = await Geolocation.GetLocationAsync(new GeolocationRequest(
+                                    GeolocationAccuracy.Lowest, TimeSpan.FromSeconds(3)));                   
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Woops: {ex.Message}");
+            }
+        return location;
         }
     }
 }

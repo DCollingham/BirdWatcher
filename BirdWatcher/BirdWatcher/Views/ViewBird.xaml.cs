@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace BirdWatcher.Views
@@ -27,9 +20,10 @@ namespace BirdWatcher.Views
             ImageName.Source =  Bird.ImageUrl;
             birdName.Text = "Name: " + Bird.Name;
             birdLocation.Text = "Location: " + Bird.Location;
-            birdFamily.Text = "Family: " + Bird.Family;
-            birdSpecies.Text = "Species: " + Bird.Species;
-            dateSpotted.Text = "Date Spotted: " + Bird.DateSpotted;
+            dateSpotted.Text = "Date Spotted: " +
+            string.Format(string.Format("{0:ddd, MMM d, yyyy}", Bird.DateSpotted));
+            longitude.Text = "longitude: " + Bird.Longitude;
+            latitude.Text = "latitude: " + Bird.Latitude;
         }
     }
 }

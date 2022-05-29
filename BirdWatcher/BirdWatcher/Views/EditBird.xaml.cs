@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -22,7 +18,6 @@ namespace BirdWatcher
             InitializeComponent();
             Bird = bird;
             FillBirdLabels();
-            Debug.WriteLine($" Bird Id: {Bird.ID}");
         }
 
 
@@ -32,6 +27,8 @@ namespace BirdWatcher
             {
                 Bird.Name = nameEntry.Text;
                 Bird.Location = locationEntry.Text;
+                Bird.DateSpotted = datePicker.Date;
+
                 if (imageChanged)
                 {
                     Bird.ImageUrl = ImageFilePath;
@@ -80,6 +77,8 @@ namespace BirdWatcher
             nameEntry.Text = Bird.Name;
             locationEntry.Text = Bird.Location;
             previousImage.BindingContext = Bird;
+            datePicker.Date = Bird.DateSpotted;
+
         }
     }
 }

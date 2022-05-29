@@ -14,9 +14,9 @@ namespace BirdWatcher
         public string Name { get; set; }
         public string Location { get; set; }
         public string ImageUrl { get; set; }
-        public string Family { get; set; }
-        public string DateSpotted { get; set; }
-        public string Species { get; set; }
-        public int Certainty { get; set; }
+        public DateTime DateSpotted { get; set; }
+        public double Longitude { get; set; }
+        public double Latitude { get; set; }
+
     }
 }

@@ -7,9 +7,9 @@
             <Image x:Name="ImageName"/>
             <Label x:Name="birdName"/>
             <Label x:Name="birdLocation"/>
-            <Label x:Name="birdFamily"/>
-            <Label x:Name="birdSpecies"/>
             <Label x:Name="dateSpotted"/>
+            <Label x:Name="longitude"/>
+            <Label x:Name="latitude"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
