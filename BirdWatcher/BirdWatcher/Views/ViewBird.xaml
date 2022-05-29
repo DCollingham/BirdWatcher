@@ -9,6 +9,7 @@
             <Label x:Name="birdLocation"/>
             <Label x:Name="birdFamily"/>
             <Label x:Name="birdSpecies"/>
+            <Label x:Name="dateSpotted"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

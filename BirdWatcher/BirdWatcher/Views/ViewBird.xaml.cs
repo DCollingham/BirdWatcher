@@ -29,7 +29,7 @@ namespace BirdWatcher.Views
             birdLocation.Text = "Location: " + Bird.Location;
             birdFamily.Text = "Family: " + Bird.Family;
             birdSpecies.Text = "Species: " + Bird.Species;
-
+            dateSpotted.Text = "Date Spotted: " + Bird.DateSpotted;
         }
     }
 }

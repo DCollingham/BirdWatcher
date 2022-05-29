@@ -32,8 +32,10 @@ namespace BirdWatcher
                     Location = locationEntry.Text,
                     ImageUrl = ImageFilePath,
                     Family = familyEntry.Text,
-                    Species = speciesEntry.Text
-                });
+                    Species = speciesEntry.Text,
+                    DateSpotted = datePicker.Date.ToString("dd/MM/yyyy")
+
+                }); ;
 
                 ClearLabels();
             }

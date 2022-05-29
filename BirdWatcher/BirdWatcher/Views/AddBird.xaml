@@ -11,6 +11,8 @@
                Placeholder="Enter bird species" />
         <Entry x:Name="locationEntry"
                Placeholder="Enter location" />
+        <DatePicker x:Name="datePicker" 
+                    Format="dd/MM/yyyy"/>
         <Button Text="Add a photo"
                 Clicked="AddPhoto_Clicked" />
         <Button Text="Take a photo"
