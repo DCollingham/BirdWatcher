@@ -38,5 +38,7 @@
 	<string>This app would like to use your photos</string>
 	<key>NSCameraUsageDescription</key>
 	<string>This app would like to take pictures</string>
+	<key>NSLocationUsageDescription</key>
+	<string>This app would like to know your location</string>
 </dict>
 </plist>

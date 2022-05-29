@@ -3,17 +3,21 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BirdWatcher.Edit">
     <StackLayout Margin="20,35,20,20" >
-        <Image x:Name="previousImage"  Source="{Binding ImageUrl}"/>
+        <Image x:Name="previousImage"  Source="{Binding ImageUrl}"
+               HeightRequest="200"
+               WidthRequest="200"/>
         <Entry x:Name="nameEntry"
                Placeholder="Enter bird name" />
         <Entry x:Name="locationEntry"
                Placeholder="Enter location" />
+        <DatePicker  x:Name="datePicker"
+                     Format="dd/MM/yyyy"
+                     Date="{Binding DateSpotted}"/>
         <Button Text="Add different photo"
                 Clicked="AddPhoto_Clicked" />
         <Button Text="Take a photo"
                 Clicked="TakePhoto_Clicked" />
         <Button Text="Update Entry"
                 Clicked="OnButtonClicked" />
-
     </StackLayout>
 </ContentPage>
