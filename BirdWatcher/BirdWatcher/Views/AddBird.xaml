@@ -2,20 +2,41 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BirdWatcher.AddBird">
-    <StackLayout Margin="20,35,20,20">
-        <Entry x:Name="nameEntry"
-               Placeholder="Enter bird name" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="navButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#014D43"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Padding" Value="20" />
+                <Setter  Property="CornerRadius" Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout BackgroundColor="#DEDEDE">
+        <Image x:Name="resultImage"
+               HeightRequest="250"
+               Margin="0, 10, 0, 0"/> 
+        <Entry x:Name="nameEntry"              
+               Placeholder="Enter bird name" 
+               Margin="10, 0, 10, 0"/>
         <Entry x:Name="locationEntry"
-               Placeholder="Enter location" />
+               Placeholder="Enter location" 
+               Margin="10, 0, 10, 0"/>
         <DatePicker x:Name="datePicker" 
-                    Format="dd/MM/yyyy"/>
+                    Format="dd/MM/yyyy"
+                    Margin="10, 0, 10, 0"/>
         <Button Text="Add a photo"
-                Clicked="AddPhoto_Clicked" />
+                Clicked="AddPhoto_Clicked" 
+                Style="{StaticResource navButton}"/>
         <Button Text="Take a photo"
-                Clicked="TakePhoto_Clicked" />
-        <Button Text="Add to Database"
-                Clicked="OnButtonClicked" />
-        <Image x:Name="resultImage"/>
+                Clicked="TakePhoto_Clicked" 
+                Style="{StaticResource navButton}"/>
+        <Button Text="Complete Sighting"
+                Clicked="OnButtonClicked" 
+                Style="{StaticResource navButton}"/>
+
 
     </StackLayout>
 </ContentPage>
