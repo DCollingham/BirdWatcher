@@ -16,6 +16,7 @@ namespace BirdWatcher
         public AddBird()
         {
             InitializeComponent();
+            resultImage.Source = "BirdPlaceholder.png";
         }
  
 
@@ -74,6 +75,7 @@ namespace BirdWatcher
             nameEntry.Text = string.Empty;
             locationEntry.Text = string.Empty;
             ImageFilePath = string.Empty;
+            resultImage.Source = "BirdPlaceholder.png";
         }
 
         private async Task<Location> GetLocation()

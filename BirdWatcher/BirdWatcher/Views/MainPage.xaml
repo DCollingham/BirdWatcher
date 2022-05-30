@@ -3,25 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BirdWatcher.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Bird Watcher!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-        <Label Text="Work Diary" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        <Button Text="Add Entry" Clicked="AddEntryClicked"/>
-        <Button Text="Gallery" Clicked="Gallery_Clicked"/>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="navButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#014D43"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="Padding" Value="20" />
+                <Setter  Property="CornerRadius" Value="0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#DEDEDE">
+        <Grid >
+            <Image Source="TopMenu.png" Aspect="Fill" />
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+            </Grid.ColumnDefinitions>
+        </Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition Width="auto"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Button Grid.Row="10" Grid.ColumnSpan="7" 
+                    Style="{StaticResource navButton}"  
+                    Text="Add Sighting" Clicked="AddEntryClicked"/>
+            <Button Grid.Row="11" Grid.ColumnSpan="7"   
+                    Style="{StaticResource navButton}"
+                    Text="View Sighting" Clicked="Gallery_Clicked"/>
+            <Button Grid.Row="12" Grid.ColumnSpan="7" 
+                    Style="{StaticResource navButton}"  
+                    Text="Information" Clicked="Gallery_Clicked"/>
+        </Grid >
+
 
     </StackLayout>
 
