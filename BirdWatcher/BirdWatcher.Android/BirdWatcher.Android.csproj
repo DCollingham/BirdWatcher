@@ -88,13 +88,16 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <AndroidResource Include="Resources\drawable\TopMenu.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BirdWatcher\BirdWatcher.csproj">
       <Project>{573544AA-C628-4300-8337-CE1F682AB403}</Project>
       <Name>BirdWatcher</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\menu.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
