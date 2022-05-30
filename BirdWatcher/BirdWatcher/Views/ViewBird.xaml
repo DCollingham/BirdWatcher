@@ -1,15 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BirdWatcher.Views.ViewBird">
+             x:Class="BirdWatcher.Views.ViewBird"
+             Title="Details">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="birdLabel" TargetType="Label">
+                <Setter Property="Margin" Value="70,0,0,0"/>
+                <Setter Property="FontFamily" Value="Segoe UI"/>
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="Padding" Value="5" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
     <ContentPage.Content>
-        <StackLayout>
-            <Image x:Name="ImageName"/>
-            <Label x:Name="birdName"/>
-            <Label x:Name="birdLocation"/>
-            <Label x:Name="dateSpotted"/>
-            <Label x:Name="longitude"/>
-            <Label x:Name="latitude"/>
+        <StackLayout BackgroundColor="#DEDEDE">
+            <Image x:Name="ImageName"
+                   Margin="0,10,0,0"/>
+            <Label x:Name="birdName"
+                   Style="{StaticResource birdLabel}"/>
+            <Label x:Name="birdLocation"
+                   Style="{StaticResource birdLabel}"/>
+            <Label x:Name="dateSpotted"
+                   Style="{StaticResource birdLabel}"/>
+            <Label x:Name="longitude"
+                   Style="{StaticResource birdLabel}"/>
+            <Label x:Name="latitude"
+                   Style="{StaticResource birdLabel}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
