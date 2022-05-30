@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace BirdWatcher
 {
-    public class BirdViewModel
+    public class BirdViewModel //Non-working attempt at integrating MVVM
     {
         public ObservableCollection<Bird> Birds { get; }
         public Command LoadItemsCommand { get; }

@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace BirdWatcher
 {
-    public class Bird
+    public class Bird //Bird object is stored in SQLite Database
     {
         [PrimaryKey, AutoIncrement]
         public int ID { get; set; }

@@ -1,23 +1,43 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BirdWatcher.Edit">
-    <StackLayout Margin="20,35,20,20" >
+             x:Class="BirdWatcher.Edit"
+             Title="Edit entry">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+        <Style x:Key="navButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#014D43"/>
+            <Setter Property="FontFamily" Value="Segoe UI"/>
+            <Setter Property="TextColor" Value="White"/>
+            <Setter Property="FontAttributes" Value="Bold"/>
+            <Setter Property="Padding" Value="20" />
+            <Setter  Property="CornerRadius" Value="0" />
+        </Style>
+    </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout BackgroundColor="#DEDEDE">
         <Image x:Name="previousImage"  Source="{Binding ImageUrl}"
-               HeightRequest="200"
-               WidthRequest="200"/>
+               HeightRequest="250"
+               WidthRequest="250"
+               Margin="0, 10, 0, 0"/>
         <Entry x:Name="nameEntry"
-               Placeholder="Enter bird name" />
+               Placeholder="Enter bird name" 
+               Margin=" 10, 0, 0, 10"/>
         <Entry x:Name="locationEntry"
-               Placeholder="Enter location" />
+               Placeholder="Enter location" 
+               Margin="10, 0, 0, 10"/>
         <DatePicker  x:Name="datePicker"
                      Format="dd/MM/yyyy"
-                     Date="{Binding DateSpotted}"/>
+                     Date="{Binding DateSpotted}"
+                     Margin=" 10, 0, 0, 10"/>
         <Button Text="Add different photo"
-                Clicked="AddPhoto_Clicked" />
+                Clicked="AddPhoto_Clicked" 
+                Style="{StaticResource navButton}"/>
         <Button Text="Take a photo"
-                Clicked="TakePhoto_Clicked" />
+                Clicked="TakePhoto_Clicked" 
+                Style="{StaticResource navButton}"/>
         <Button Text="Update Entry"
-                Clicked="OnButtonClicked" />
+                Clicked="OnButtonClicked" 
+                Style="{StaticResource navButton}"/>
     </StackLayout>
 </ContentPage>

@@ -1,9 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="BirdWatcher.AddBird">
+             x:Class="BirdWatcher.AddBird"
+             Title="Record a sighting">
+    
     <ContentPage.Resources>
         <ResourceDictionary>
+            <!--Styles the button items for this page-->
             <Style x:Key="navButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#014D43"/>
                 <Setter Property="FontFamily" Value="Segoe UI"/>
@@ -14,7 +17,10 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+    
+    
     <StackLayout BackgroundColor="#DEDEDE">
+        <!--Main Bird Image-->
         <Image x:Name="resultImage"
                HeightRequest="250"
                Margin="0, 10, 0, 0"/> 
@@ -24,9 +30,11 @@
         <Entry x:Name="locationEntry"
                Placeholder="Enter location" 
                Margin="10, 0, 10, 0"/>
+        <!--Formats date to UK Format-->
         <DatePicker x:Name="datePicker" 
                     Format="dd/MM/yyyy"
                     Margin="10, 0, 10, 0"/>
+        <!--Asigns style to buttons-->
         <Button Text="Add a photo"
                 Clicked="AddPhoto_Clicked" 
                 Style="{StaticResource navButton}"/>
@@ -36,7 +44,5 @@
         <Button Text="Complete Sighting"
                 Clicked="OnButtonClicked" 
                 Style="{StaticResource navButton}"/>
-
-
     </StackLayout>
 </ContentPage>

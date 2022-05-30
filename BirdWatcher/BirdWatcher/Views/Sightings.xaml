@@ -3,7 +3,8 @@
 	xmlns="http://xamarin.com/schemas/2014/forms"
 	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
 			 x:Class="BirdWatcher.Gallery"
-	xmlns:local="clr-namespace:BirdWatcher">
+	xmlns:local="clr-namespace:BirdWatcher"
+	Title="Sightings">
 	<!--<ContentPage.BindingContext>
 		<local:BirdViewModel/>
 	</ContentPage.BindingContext>-->
@@ -26,34 +27,36 @@
 		</Style>
 	</ContentPage.Resources>
 	<ContentPage.Content>
-		<StackLayout>
+		<StackLayout BackgroundColor="#DEDEDE">
 			<CollectionView x:Name="birdCollection" ItemsSource="{Binding Birds}">
 				<CollectionView.ItemTemplate>
 					<DataTemplate>
-						<SwipeView>
+						<SwipeView >
 							<SwipeView.RightItems>
 								<SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
 									<SwipeItem Text="Delete" BackgroundColor="DarkGray" 
 											   Invoked="DeleteItem_Invoked"
 											   CommandParameter="{Binding .}"></SwipeItem>
 									<SwipeItem Text="Edit"
-											   BackgroundColor="LightPink"
-											   Invoked="SwipeItem_Invoked"
+											   BackgroundColor="#014D43"
+											   Invoked="SwipeItem_Invoked"                                          
 											   CommandParameter="{Binding .}"></SwipeItem>
 								</SwipeItems>
 							</SwipeView.RightItems>
 							
 							<SwipeView.LeftItems>
 								<SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
-									<SwipeItem Text="Details" BackgroundColor="DarkGray" 
+									<SwipeItem Text="Details" BackgroundColor="#014D43" 
 											   Invoked="SwipeItem_DetailsInvoked"
 											   CommandParameter="{Binding .}"></SwipeItem>
    
 								</SwipeItems>
 							</SwipeView.LeftItems>
 							
-									<Grid Padding="8">
+									<Grid Padding="5" Margin="8" 
+										  BackgroundColor="LightGray" >
 								<Grid.RowDefinitions>
+									<RowDefinition Height="Auto" />
 									<RowDefinition Height="Auto" />
 									<RowDefinition Height="Auto" />
 								</Grid.RowDefinitions>
@@ -61,19 +64,28 @@
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="Auto" />
 									<ColumnDefinition Width="Auto" />
+									<ColumnDefinition Width="Auto" />
 								</Grid.ColumnDefinitions>
 
 								<Image Grid.RowSpan="2" 
 									   Source="{Binding ImageUrl}"
 									   Aspect="AspectFill"
-									   HeightRequest="60"
-									   WidthRequest="60">
+									   HeightRequest="75"
+									   WidthRequest="75">
 								</Image>
+										
 								<Label Grid.Column="1" Text="{Binding Name}"
-										FontAttributes="Bold" />
+										FontAttributes="Bold" 
+									   FontFamily="Segoe UI"
+									   FontSize="Medium"/>
 								<Label Grid.Row="1" Grid.Column="1"
 									   Text="{Binding Location}"
 									   FontAttributes="Italic"
+									   VerticalOptions="End" />
+								<Label Grid.Row="1" Grid.Column="3"
+									   Text="{Binding DateSpotted, StringFormat='{0:dd/MM/yyyy}'}"
+									   FontAttributes="Italic"
+									   HorizontalTextAlignment="End"
 									   VerticalOptions="End" />
 							</Grid>
 						</SwipeView>
