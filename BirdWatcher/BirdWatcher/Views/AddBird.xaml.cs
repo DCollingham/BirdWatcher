@@ -5,6 +5,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using System.Diagnostics;
 using System.IO;
+using ExifLib;
 
 namespace BirdWatcher
 {
@@ -16,13 +17,15 @@ namespace BirdWatcher
         public AddBird()
         {
             InitializeComponent();
-            resultImage.Source = "BirdPlaceholder.png";
+            BirdLocation = GetLocation().Result; //Gets Location when loading page
+            resultImage.Source = "BirdPlaceholder.png"; //Placeholder image for a bird
         }
  
 
         async void OnButtonClicked(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(nameEntry.Text) && !string.IsNullOrWhiteSpace(locationEntry.Text))
+            //Runs if either name or location filled-in
+            if (!string.IsNullOrWhiteSpace(nameEntry.Text) || !string.IsNullOrWhiteSpace(locationEntry.Text))
             {
                 await App.Database.SaveBirdAsync(new Bird //Creates new Bird object & Saves to DB
                 {
@@ -38,7 +41,7 @@ namespace BirdWatcher
             }
         }
 
-        private async void AddPhoto_Clicked(object sender, EventArgs e) //Adds a photo
+        private async void AddPhoto_Clicked(object sender, EventArgs e) //Add a photo from file
         {
             FileResult result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions //Asigns photo to result
             {
@@ -47,24 +50,26 @@ namespace BirdWatcher
 
             if (result != null)
             {
-                ImageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
-                Stream stream = await result.OpenReadAsync();
-                resultImage.Source = ImageSource.FromStream(() => stream);
+                ImageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath); //Gets file path
+                Stream stream = await result.OpenReadAsync(); //Creates stream
+                resultImage.Source = ImageSource.FromStream(() => stream); //Sets page image from stream
+                SetLocation(result); //Gets location from Photo Metadata
+
             }
         }
 
-        async private void TakePhoto_Clicked(object sender, EventArgs e)
+        //Take photo to add to sighting
+        private async void TakePhoto_Clicked(object sender, EventArgs e) 
         {
-            FileResult result = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions
+            FileResult result = await MediaPicker.CapturePhotoAsync(new MediaPickerOptions 
             {
                 Title = "Take a photo"
             });
 
             if(result != null)
             {
-
+                //Gets filepath and GPS location
                 ImageFilePath = Path.Combine(FileSystem.AppDataDirectory, result.FullPath);
-                Debug.WriteLine($"This is the path {ImageFilePath}");
                 Stream stream = await result.OpenReadAsync();
                 resultImage.Source = ImageSource.FromStream(() => stream);
                 BirdLocation = GetLocation().Result;
@@ -78,6 +83,7 @@ namespace BirdWatcher
             resultImage.Source = "BirdPlaceholder.png";
         }
 
+        //Gets GPS location
         private async Task<Location> GetLocation()
         {
             Location location = null;
@@ -85,6 +91,7 @@ namespace BirdWatcher
             try
             {
                 location = await Geolocation.GetLastKnownLocationAsync();
+
                 if(location == null)
                 {
                     location = await Geolocation.GetLocationAsync(new GeolocationRequest(
@@ -96,6 +103,15 @@ namespace BirdWatcher
                 Debug.WriteLine($"Woops: {ex.Message}");
             }
         return location;
+        }
+
+        //Sets location property to Metadata location
+        private async void SetLocation(FileResult result)
+        {
+            Stream infoStream = await result.OpenReadAsync();
+            JpegInfo imageInfo = ExifReader.ReadJpeg(infoStream);
+            BirdLocation.Latitude = imageInfo.GpsLatitude[0];
+            BirdLocation.Longitude = imageInfo.GpsLongitude[0];
         }
     }
 }
