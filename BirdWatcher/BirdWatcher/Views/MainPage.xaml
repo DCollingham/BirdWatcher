@@ -5,6 +5,7 @@
 
     <ContentPage.Resources>
         <ResourceDictionary>
+            <!--Button Styling for page-->
             <Style x:Key="navButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="#014D43"/>
                 <Setter Property="FontFamily" Value="Segoe UI"/>
@@ -15,8 +16,10 @@
             </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
+    <!--Sets background colour for page-->
     <StackLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" BackgroundColor="#DEDEDE">
         <Grid >
+            <!--Top menu image-->
             <Image Source="TopMenu.png" Aspect="Fill" />
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -25,7 +28,7 @@
                 <ColumnDefinition Width="auto"/>
             </Grid.ColumnDefinitions>
         </Grid>
-
+        <!--Rows and column amount set to get required spacing-->
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
@@ -38,6 +41,7 @@
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
@@ -45,9 +49,8 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition Width="auto"/>
-
             </Grid.ColumnDefinitions>
-
+            <!--Button stle set to resource-->
             <Button Grid.Row="10" Grid.ColumnSpan="7" 
                     Style="{StaticResource navButton}"  
                     Text="Add Sighting" Clicked="AddEntryClicked"/>
@@ -58,8 +61,5 @@
                     Style="{StaticResource navButton}"  
                     Text="Information" Clicked="Gallery_Clicked"/>
         </Grid >
-
-
     </StackLayout>
-
 </ContentPage>

@@ -17,6 +17,7 @@ namespace BirdWatcher.Views
 
         private void FillLabels()
         {
+            //Fills labels and displays image
             ImageName.Source =  Bird.ImageUrl;
             birdName.Text = "Name: " + Bird.Name;
             birdLocation.Text = "Location: " + Bird.Location;

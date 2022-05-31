@@ -17,11 +17,13 @@ namespace BirdWatcher
 
         private void AddEntryClicked(object sender, EventArgs e)
         {
+            //New Navigation window on button clicked
             Navigation.PushModalAsync(new NavigationPage(new AddBird()));
         }
 
         private void Gallery_Clicked(object sender, EventArgs e)
         {
+            //New Navigation window on button clicked
             _ = Navigation.PushModalAsync(new NavigationPage(new Gallery()));
         }
     }

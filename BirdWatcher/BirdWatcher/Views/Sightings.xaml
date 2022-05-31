@@ -5,12 +5,14 @@
 			 x:Class="BirdWatcher.Gallery"
 	xmlns:local="clr-namespace:BirdWatcher"
 	Title="Sightings">
+	
 	<!--<ContentPage.BindingContext>
 		<local:BirdViewModel/>
 	</ContentPage.BindingContext>-->
 	
 	<ContentPage.Resources>
 		<Style TargetType="Grid">
+			<!--Visual appearence changes based on state--> 
 			<Setter Property="VisualStateManager.VisualStateGroups">
 				<VisualStateGroupList>
 					<VisualStateGroup x:Name="CommonStates">
@@ -27,11 +29,13 @@
 		</Style>
 	</ContentPage.Resources>
 	<ContentPage.Content>
+		
 		<StackLayout BackgroundColor="#DEDEDE">
 			<CollectionView x:Name="birdCollection" ItemsSource="{Binding Birds}">
 				<CollectionView.ItemTemplate>
 					<DataTemplate>
 						<SwipeView >
+							<!--Right items menu-->
 							<SwipeView.RightItems>
 								<SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
 									<SwipeItem Text="Delete" BackgroundColor="DarkGray" 
@@ -43,7 +47,7 @@
 											   CommandParameter="{Binding .}"></SwipeItem>
 								</SwipeItems>
 							</SwipeView.RightItems>
-							
+							<!--Left items menu-->
 							<SwipeView.LeftItems>
 								<SwipeItems SwipeBehaviorOnInvoked="RemainOpen">
 									<SwipeItem Text="Details" BackgroundColor="#014D43" 
@@ -52,7 +56,7 @@
    
 								</SwipeItems>
 							</SwipeView.LeftItems>
-							
+								<!--Row and column definitions for each bird-->
 									<Grid Padding="5" Margin="8" 
 										  BackgroundColor="LightGray" >
 								<Grid.RowDefinitions>
@@ -82,6 +86,7 @@
 									   Text="{Binding Location}"
 									   FontAttributes="Italic"
 									   VerticalOptions="End" />
+								 <!--Date formatted to UK date-->
 								<Label Grid.Row="1" Grid.Column="3"
 									   Text="{Binding DateSpotted, StringFormat='{0:dd/MM/yyyy}'}"
 									   FontAttributes="Italic"

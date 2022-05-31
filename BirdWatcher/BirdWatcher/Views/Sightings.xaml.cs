@@ -28,14 +28,15 @@ namespace BirdWatcher
         private void DeleteItem_Invoked(object sender, EventArgs e) 
         {
 
-            SwipeItem swipeview = sender as SwipeItem;
-            Bird bird = (Bird)swipeview.CommandParameter;
-            _ = App.Database.DeleteBird(bird);
-            _ = Birds.Remove(bird);
+            SwipeItem swipeview = sender as SwipeItem; //Gets swipeitem from sender object
+            Bird bird = (Bird)swipeview.CommandParameter; //Gets bird object
+            _ = App.Database.DeleteBird(bird); //Deletes object from Database
+            _ = Birds.Remove(bird); //Deletes object from observable collection
         }
 
         private void SwipeItem_Invoked(object sender, EventArgs e)
         {
+            //Get bird object
             SwipeItem swipeview = sender as SwipeItem;
             Bird bird = (Bird)swipeview.CommandParameter;
             _ = Navigation.PushModalAsync(new NavigationPage(new Edit(bird)));
@@ -43,9 +44,10 @@ namespace BirdWatcher
 
         private void SwipeItem_DetailsInvoked(object sender, EventArgs e)
         {
+            //Get bird object
             SwipeItem swipeview = sender as SwipeItem;
             Bird bird = (Bird)swipeview.CommandParameter;
-            Debug.WriteLine(bird.Name);
+            //Push new page with bird object
             _ = Navigation.PushModalAsync(new NavigationPage(new ViewBird(bird)));
         }
     }
