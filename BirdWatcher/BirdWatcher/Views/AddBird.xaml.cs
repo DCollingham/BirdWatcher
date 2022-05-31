@@ -12,8 +12,8 @@ namespace BirdWatcher
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddBird : ContentPage
     {
-        public string ImageFilePath { get; set; } //Set Image Path Property
-        public Location BirdLocation { get; set; } // Set Location Property
+        private string ImageFilePath { get; set; } //Set Image Path Property
+        private Location BirdLocation { get; set; } // Set Location Property
         public AddBird()
         {
             InitializeComponent();
