@@ -6,7 +6,7 @@ namespace BirdWatcher.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ViewBird : ContentPage
     {
-        public Bird Bird { get; set; }
+        private Bird Bird { get; set; }
         public ViewBird(Bird bird)
         {
             InitializeComponent();

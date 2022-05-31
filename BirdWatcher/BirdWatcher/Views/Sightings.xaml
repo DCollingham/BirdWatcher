@@ -31,10 +31,10 @@
 	<ContentPage.Content>
 		
 		<StackLayout BackgroundColor="#DEDEDE">
-			<CollectionView x:Name="birdCollection" ItemsSource="{Binding Birds}">
+			<CollectionView x:Name="birdCollection">
 				<CollectionView.ItemTemplate>
 					<DataTemplate>
-						<SwipeView >
+						<SwipeView  SwipeStarted="SwipeView_SwipeStarted" SwipeEnded="SwipeView_SwipeEnded">
 							<!--Right items menu-->
 							<SwipeView.RightItems>
 								<SwipeItems SwipeBehaviorOnInvoked="RemainOpen">

@@ -10,8 +10,8 @@ namespace BirdWatcher
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Edit : ContentPage
     {
-        public string ImageFilePath { get; set; } //Filepath property
-        public Bird Bird { get; set; } //Bird object
+        private string ImageFilePath { get; set; } //Filepath property
+        private Bird Bird { get; set; } //Bird object
 
         private bool _imageChanged = false; //Changes if user adds new image
         public Edit(Bird bird)
