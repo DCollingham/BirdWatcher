@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BirdWatcher.Views;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -25,6 +26,12 @@ namespace BirdWatcher
         {
             //New Navigation window on button clicked
             _ = Navigation.PushModalAsync(new NavigationPage(new Gallery()));
+        }
+
+        private void Information_Clicked(object sender, EventArgs e)
+        {
+            //New Navigation window on button clicked
+            _ = Navigation.PushModalAsync(new NavigationPage(new Information()));
         }
     }
 }

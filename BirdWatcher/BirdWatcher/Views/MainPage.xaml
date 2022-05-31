@@ -59,7 +59,7 @@
                     Text="View Sighting" Clicked="Gallery_Clicked"/>
             <Button Grid.Row="12" Grid.ColumnSpan="7" 
                     Style="{StaticResource navButton}"  
-                    Text="Information" Clicked="Gallery_Clicked"/>
+                    Text="Information" Clicked="Information_Clicked"/>
         </Grid >
     </StackLayout>
 </ContentPage>
