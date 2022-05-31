@@ -4,6 +4,7 @@
              x:Class="BirdWatcher.Edit"
              Title="Edit entry">
     <ContentPage.Resources>
+        <!--Button styling for page-->
         <ResourceDictionary>
         <Style x:Key="navButton" TargetType="Button">
             <Setter Property="BackgroundColor" Value="#014D43"/>
@@ -15,7 +16,9 @@
         </Style>
     </ResourceDictionary>
     </ContentPage.Resources>
+    
     <StackLayout BackgroundColor="#DEDEDE">
+        <!--Left and right margin for each item-->
         <Image x:Name="previousImage"  Source="{Binding ImageUrl}"
                HeightRequest="250"
                WidthRequest="250"
@@ -26,10 +29,12 @@
         <Entry x:Name="locationEntry"
                Placeholder="Enter location" 
                Margin="10, 0, 0, 10"/>
+        <!--Formats date to UK format-->
         <DatePicker  x:Name="datePicker"
                      Format="dd/MM/yyyy"
                      Date="{Binding DateSpotted}"
                      Margin=" 10, 0, 0, 10"/>
+        <!--Button styling set to resource style-->
         <Button Text="Add different photo"
                 Clicked="AddPhoto_Clicked" 
                 Style="{StaticResource navButton}"/>

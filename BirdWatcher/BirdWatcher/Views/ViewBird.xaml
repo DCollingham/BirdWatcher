@@ -5,6 +5,7 @@
              Title="Details">
     <ContentPage.Resources>
         <ResourceDictionary>
+            <!--Bird Styles for page-->
             <Style x:Key="birdLabel" TargetType="Label">
                 <Setter Property="Margin" Value="70,0,0,0"/>
                 <Setter Property="FontFamily" Value="Segoe UI"/>
@@ -14,6 +15,7 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ContentPage.Content>
+        <!--Displays bird image and information-->
         <StackLayout BackgroundColor="#DEDEDE">
             <Image x:Name="ImageName"
                    Margin="0,10,0,0"/>
