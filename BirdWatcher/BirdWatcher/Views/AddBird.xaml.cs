@@ -57,7 +57,7 @@ namespace BirdWatcher
 
             }
         }
-
+        //https://docs.microsoft.com/en-us/xamarin/essentials/media-picker?tabs=android
         //Take photo to add to sighting
         private async void TakePhoto_Clicked(object sender, EventArgs e) 
         {
