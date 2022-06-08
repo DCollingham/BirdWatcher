@@ -16,3 +16,5 @@ Year 2 Project - Mobile Bird Recording App<br>
 > ●	At least 3 different modes of user input<br>
 > ●	Able to include photos of birds<br>
 > ●	Able to include location of sighting<br>
+> 
+https://youtu.be/Nybbgu0gx8w
