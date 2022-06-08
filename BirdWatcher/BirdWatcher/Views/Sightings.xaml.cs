@@ -36,6 +36,7 @@ namespace BirdWatcher
             _ = Birds.Remove(bird); //Deletes object from observable collection
         }
 
+        //Take user to edit page
         private void SwipeItem_Invoked(object sender, EventArgs e)
         {
             //Get bird object
@@ -43,7 +44,7 @@ namespace BirdWatcher
             Bird bird = (Bird)swipeview.CommandParameter;
             _ = Navigation.PushModalAsync(new NavigationPage(new Edit(bird)));
         }
-
+        //Take user to details page
         private void SwipeItem_DetailsInvoked(object sender, EventArgs e)
         {
             //Get bird object
@@ -55,6 +56,8 @@ namespace BirdWatcher
 
 
         //https://stackoverflow.com/questions/62874278/how-can-i-make-xamarin-forms-close-open-swiped-views
+
+        //Closes open swipe views when swiping on a new item
         private void SwipeView_SwipeStarted(object sender, SwipeStartedEventArgs e)
         {
 
