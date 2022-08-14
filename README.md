@@ -1,4 +1,4 @@
-# BirdWatcher - In Progress
+# BirdWatcher
 Year 2 Project - Mobile Bird Recording App<br>
 ##### **Will implement MVVM time permitting** 
 > This assignment requires you to plan a mobile Android app and implement core functionality.
